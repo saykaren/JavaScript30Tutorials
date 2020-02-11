@@ -7,40 +7,41 @@
   </head>
   <body>
     <div class="keys">
-      <div data-key="65" class="key">
+      <div data-key="65" class="key" onClick=clickSound(65)>
         <kbd>A</kbd>
         <span class="sound">clap</span>
       </div>
-      <div data-key="83" class="key">
+      <div data-key="83" class="key" onClick=clickSound(83)>
         <kbd>S</kbd>
         <span class="sound">hihat</span>
       </div>
-      <div data-key="68" class="key">
+      <div data-key="68" class="key" onClick=clickSound(68)>
         <kbd>D</kbd>
         <span class="sound">kick</span>
       </div>
-      <div data-key="70" class="key">
+      <div data-key="70" class="key" onClick=clickSound(70)>
         <kbd>F</kbd>
         <span class="sound">openhat</span>
       </div>
-      <div data-key="71" class="key">
+      <div data-key="71" class="key" onClick=clickSound(71)>
         <kbd>G</kbd>
 
         <span class="sound">boom</span>
       </div>
-      <div data-key="72" class="key">
+      <div data-key="72" class="key" onClick=clickSound(72)>
         <kbd>H</kbd>
         <span class="sound">ride</span>
       </div>
-      <div data-key="74" class="key">
+      <div data-key="74" class="key" onClick=clickSound(74)>
         <kbd>J</kbd>
         <span class="sound">snare</span>
       </div>
-      <div data-key="75" class="key">
+
+      <div data-key="75" class="key" onClick=clickSound(75)>
         <kbd>K</kbd>
         <span class="sound">tom</span>
       </div>
-      <div data-key="76" class="key">
+      <div data-key="76" class="key" onClick=clickSound(76)>
         <kbd>L</kbd>
         <span class="sound">tink</span>
       </div>
@@ -58,11 +59,21 @@
 
     <script>
       function playSound(e) {
+        console.log(e);
         const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
         if (!audio) return;
         audio.currentTime = 0; //Allows you to have same audio play before it completes
         audio.play();
         const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+        key.classList.add('playing');
+      }
+
+      function clickSound(e) {
+        const audio = document.querySelector(`audio[data-key="${e}"]`);
+        if (!audio) return;
+        audio.currentTime = 0; //Allows you to have same audio play before it completes
+        audio.play();
+        const key = document.querySelector(`.key[data-key="${e}"]`);
         key.classList.add('playing');
       }
 
@@ -74,7 +85,12 @@
       keys.forEach((key) =>
         key.addEventListener('transitionend', removeTransition),
       );
+
+      function testClick(e){
+        console.log(e);
+      };
       window.addEventListener('keydown', playSound);
+      // window.addEventListener('click', testClick);
     </script>
   </body>
 </html>
