@@ -33,9 +33,8 @@
 
     // Array.prototype.filter()
       // 1. Filter the list of inventors for those who were born in the 1500's
-      // const answer1 = inventors.filter(arr => (arr.year>1499 && arr.year>1599));
-      // const answer1 = inventors.filter(arr => ( arr.year < 1600) && arr.year > 1499);
-      // console.log({answer1});
+      const answer1 = inventors.filter(arr => ( arr.year < 1600) && arr.year > 1499);
+      console.table(answer1);
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
@@ -70,9 +69,9 @@
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
-    console.log(people);
-    const sortMe = people.sort((a,b)=>a.split(' ')[1].localeCompare(b.split(' ')[1]));
-    console.log(sortMe);
+    // console.log(people);
+    // const sortMe = people.sort((a,b)=>a.split(' ')[1].localeCompare(b.split(' ')[1]));
+    // console.log(sortMe);
 
 
     // 8. Reduce Exercise
