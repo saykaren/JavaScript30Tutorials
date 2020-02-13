@@ -33,27 +33,24 @@
 
     // Array.prototype.filter()
       // 1. Filter the list of inventors for those who were born in the 1500's
-      const answer1 = inventors.filter(arr => ( arr.year < 1600) && arr.year > 1499);
-      console.table(answer1);
+      // const answer1 = inventors.filter(arr => ( arr.year < 1600) && arr.year > 1499);
+      // console.table(answer1);
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
-    // const newArrayAnswer2 = [];
-    // // const answer2 = inventors.map(x => (newArrayAnswer2.push(x.first && x.last))); //adds each name as individual index
-    // const answer2Combined = inventors.map(x => (newArrayAnswer2.push(`${x.first} ${x.last}`))); //combines the first and last together
-    // // console.log({newArrayAnswer2});
+    // const newArrayAnswer2 = inventors.map(x => `${x.first} ${x.last}`); //combines the first and last together
+    // console.table(newArrayAnswer2);
 
     // Array.prototype.sort()
-    // 3. Sort the inventors by birthdate, oldest to youngest /////////ISSUESSSSS
-    // const birthDateOrganized = inventors.sort(function(a,b){
-    //   return a.year-b.year;
-    // });
-    // console.log({birthDateOrganized});
+    // 3. Sort the inventors by birthdate, oldest to youngest
+    // const birthDateOrganized = inventors.sort((a,b)=>{ return a.year-b.year;});
+    // console.table(birthDateOrganized);
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
-    // const yearsLived = inventors.reduce((accu, num) => num.passed-num.year+accu, 0);
-    // console.log(yearsLived);
+    const yearsLived = inventors.reduce((accu, num) => (num.passed-num.year)+accu, 0);
+    console.log(yearsLived);
+    //!!!!number wrong check this again stopped video at 10:12
 
     // 5. Sort the inventors by years lived
     // const inventorsWithAge = [];
