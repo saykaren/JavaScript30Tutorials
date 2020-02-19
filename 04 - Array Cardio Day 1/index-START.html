@@ -82,10 +82,17 @@
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
-    // const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+    const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
     // const dateCount = {};
     // data.map(x=> dateCount[x] ? dateCount[x]+=1 : dateCount[x]=1);
-    // console.log({dateCount});
+    // console.table(dateCount);
+
+    const transportion = data.reduce((obj, item)=>{
+      obj[item] ? obj[item]++ : obj[item]=1;
+      return obj;
+    }, {})
+
+    console.table(transportion);
 
   </script>
 </body>
