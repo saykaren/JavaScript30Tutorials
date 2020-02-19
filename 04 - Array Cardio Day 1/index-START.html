@@ -55,15 +55,22 @@
     //!!!!number wrong check this again stopped video at 10:12 I got 861 // Video his 523 was from a table of 7 he got not the full 11 array.....????
 
     // 5. Sort the inventors by years lived
-    // const inventorsWithAge = [];
-    // const ages = inventors.map(x=> inventorsWithAge.push(`${x.first} is ${x.age = x.passed-x.year}`));
-    // const sortBirthdate = inventors.sort(function(a,b){
-    //   return (b.passed-b.year)-(a.passed-a.year);
-    // });
-    // console.log({sortBirthdate});
+    const inventorsWithAge = [];
+    const ages = inventors.map(x=> inventorsWithAge.push(`${x.first} is ${x.age = x.passed-x.year}`));
+    const sortBirthdate = inventors.sort(function(a,b){
+      return (b.passed-b.year)-(a.passed-a.year);
+    });
+    console.table(sortBirthdate);
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+    const category = document.querySelector('.mw-category');
+    const links = Array.from(category.querySelectorAll('a'));
+    const de = links
+            .map(link=> link.textContent)
+            .filter(streetname => streetname.includes('de'));
+
+
 
 
     // 7. sort Exercise
