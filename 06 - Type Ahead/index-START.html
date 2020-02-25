@@ -40,7 +40,9 @@ function displayMatches(){
     const regex = new RegExp(this.value, 'gi');
 
     //Not using the below, need to check go back to video 14:26
+
     const cityName = place.city.replace(regex, `<span class="h1">${this.value}</span`);
+    const stateName = place.city.replace(regex, `<span class="h1">${this.value}</span`);
 
     return `
       <li>
