@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Console Tricks!</title>
 </head>
+
 <body>
 
   <p onClick="makeGreen()">×BREAK×DOWN×</p>
@@ -18,29 +19,55 @@
     }
 
     // Regular
-
+    console.log('hello');
     // Interpolated
+    console.log('Hello I am a %s string!', 'george');
 
     // Styled
+    // console.log('%c I am some great text', 'font-size: 50px');
 
     // warning!
+  console.warn("oh NOOOO");
 
     // Error :|
+    console.error('Shit!');
 
     // Info
+    console.info('Crocodiles eat 3-4 people per year! Yikes');
 
     // Testing
+    const p = document.querySelector('p');
+    console.assert( p.classList.contains('ouch'), 'that is wrong');  // will fail
 
     // clearing
+    // console.clear();
 
     // Viewing DOM Elements
+    console.log(p);
+    console.dir(p);
 
     // Grouping together
+  console.clear();
 
+  dogs.forEach(dog => {
+    console.groupCollapsed(`${dog.name}`);
+    console.log(`this is ${dog.name}`);
+    console.log(`${dog.name} is ${dog.age} years old`);
+    console.log(`${dog.name} is ${dog.age*7} human years old`);
+    console.groupEnd(`${dog.name}`);
+  })
     // counting
+    console.count('Wes');
 
     // timing
-
+    console.time('fetching data');
+    fetch('https://api.github.com/saykaren')
+            .then(data => data.json())
+            .then(data => {
+              console.timeEnd('fetching data');
+              console.log(data);
+            });
+//performance.now another option
   </script>
 </body>
 </html>
