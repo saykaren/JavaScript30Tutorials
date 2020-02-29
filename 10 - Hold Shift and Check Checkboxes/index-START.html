@@ -57,45 +57,76 @@
 
   -->
   <div class="inbox">
-    <div class="item">
-      <input type="checkbox">
-      <p>This is an inbox layout.</p>
+    <div class="item" >
+      <input type="checkbox" id=1>
+      <label>This is an inbox layout.</label>
     </div>
-    <div class="item">
-      <input type="checkbox">
+    <div class="item" >
+      <input type="checkbox" id=2>
       <p>Check one item</p>
     </div>
     <div class="item">
-      <input type="checkbox">
+      <input type="checkbox" id=3>
       <p>Hold down your Shift key</p>
     </div>
     <div class="item">
-      <input type="checkbox">
+      <input type="checkbox" id=4>
       <p>Check a lower item</p>
     </div>
     <div class="item">
-      <input type="checkbox">
+      <input type="checkbox" id=5>
       <p>Everything in between should also be set to checked</p>
     </div>
-    <div class="item">
-      <input type="checkbox">
+    <div class="item" >
+      <input type="checkbox" id=6>
       <p>Try to do it without any libraries</p>
     </div>
     <div class="item">
-      <input type="checkbox">
+      <input type="checkbox" id=7>
       <p>Just regular JavaScript</p>
     </div>
     <div class="item">
-      <input type="checkbox">
+      <input type="checkbox"  id=8>
       <p>Good Luck!</p>
     </div>
     <div class="item">
-      <input type="checkbox">
+      <input type="checkbox" id=9>
       <p>Don't forget to tweet your result!</p>
     </div>
   </div>
 
 <script>
+  let lastClickedItem;
+
+  // let testing = document.querySelector('#\\3');
+  const clickMe = (e) =>{
+    const currentId = e.target.id;
+    if(lastClickedItem < currentId){
+      const between = currentId-lastClickedItem-1;
+      const needToClick = parseInt(lastClickedItem)+1;
+      let clickThisOne = document.querySelector(`#\\${needToClick}`);
+      // let clickThisOne = document.querySelector(`#3`);
+      clickThisOne.target.checked = true;
+
+      console.log(`last item clicked was ${lastClickedItem} and current ${currentId} and
+      current click item is ${between} than last click item.`);
+    }
+
+    if (lastClickedItem > currentId){
+      const between = lastClickedItem-currentId-1;
+      console.log(`last item clicked was ${lastClickedItem} more than ${currentId} and last click
+      between ${between} larger`);
+    }
+   // document.querySelector('p', console.log(`answer is ${p.innerHTML}`))
+   //  console.log(e);
+   //  console.log(e.target.id); //find id number
+    console.log(e.target.checked); //how to see if it is checked
+    lastClickedItem = e.target.id;
+
+
+    console.log(`last clicked was ${lastClickedItem}`);
+  }
+  window.addEventListener('click', clickMe);
 </script>
 </body>
 </html>
