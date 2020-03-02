@@ -96,37 +96,31 @@
   </div>
 
 <script>
-  let lastClickedItem;
 
-  // let testing = document.querySelector('#\\3');
-  const clickMe = (e) =>{
-    const currentId = e.target.id;
-    if(lastClickedItem < currentId){
-      const between = currentId-lastClickedItem-1;
-      const needToClick = parseInt(lastClickedItem)+1;
-      let clickThisOne = document.querySelector(`#\\${needToClick}`);
-      // let clickThisOne = document.querySelector(`#3`);
-      clickThisOne.target.checked = true;
+  const checkboxes = document.querySelectorAll('.inbox input[type="checkbox');
 
-      console.log(`last item clicked was ${lastClickedItem} and current ${currentId} and
-      current click item is ${between} than last click item.`);
+  let lastChecked;
+
+  function handleCheck(e){
+    let inBetween = false;
+    if(e.shiftKey && this.checked){
+      checkboxes.forEach(checkbox=>{
+        if(checkbox === this || checkbox === lastChecked){
+          inBetween = !inBetween;
+        }
+        if(inBetween){
+          checkbox.checked = true;
+        }
+      });
     }
+    lastChecked =  this;
 
-    if (lastClickedItem > currentId){
-      const between = lastClickedItem-currentId-1;
-      console.log(`last item clicked was ${lastClickedItem} more than ${currentId} and last click
-      between ${between} larger`);
-    }
-   // document.querySelector('p', console.log(`answer is ${p.innerHTML}`))
-   //  console.log(e);
-   //  console.log(e.target.id); //find id number
-    console.log(e.target.checked); //how to see if it is checked
-    lastClickedItem = e.target.id;
-
-
-    console.log(`last clicked was ${lastClickedItem}`);
   }
-  window.addEventListener('click', clickMe);
+
+  checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck))
+
+
+
 </script>
 </body>
 </html>
