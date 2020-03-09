@@ -2,11 +2,11 @@ const player = document.querySelector('.player');
 const video = player.querySelector('.viewer');
 
 const playerControls = document.querySelector('.player__controls');
-const progressBar = playerControls.querySelector('.progress');
-const progressFilled = playerControls.querySelector('.progress_filled');
+const progress = player.querySelector('.progress');
+const progressBar = playerControls.querySelector('.progress__filled');
 
 const toggle =  playerControls.querySelector('.toggle');
-const skipButtons = player.querySelector('[data-skip]');
+const skipButtons = player.querySelectorAll('[data-skip]');
 const ranges = player.querySelectorAll('.player__slider');
 
 
@@ -26,14 +26,34 @@ function upDateButton(){
 }
 
 function skip(){
-    console.log('skipping!');
+    video.currentTime += parseFloat(this.dataset.skip);
+}
+
+function handleRangeUpdate(){
+    video[this.name] = this.value;
+}
+
+function handleProgress(){
+    const percent = (video.currentTime / video.duration) * 100;
+    progressBar.style.flexBasis = `${percent}%`;
+}
+
+function scrub(e){
+  const scrubTime = (e.offsetX / progress.offsetWidth) * video.duration;
+  video.currentTime = scrubTime;
 }
 
 video.addEventListener('click', togglePlay);
 toggle.addEventListener('click', togglePlay);
 video.addEventListener('play', upDateButton);
 video.addEventListener('pause', upDateButton);
+video.addEventListener('timeupdate', handleProgress);
+
+ranges.forEach(range=>range.addEventListener('change', handleRangeUpdate))
+ranges.forEach(range=>range.addEventListener('mousemove', handleRangeUpdate))
 
 skipButtons.forEach(button=> button.addEventListener('click', skip));
 
-//stopped at 12 skipButtons for each not working giving error 
+progress.addEventListener('click', scrub);
+
+//stopped at 21 min
